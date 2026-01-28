@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CheckIcon } from '@heroicons/react/24/solid';
+import { Check } from 'lucide-react';
 import Button from './Button';
 
 interface PricingCardProps {
@@ -27,30 +27,32 @@ export default function PricingCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className={`relative rounded-3xl p-8 ${
+      className={`relative bg-white rounded-3xl p-8 transition-all duration-300 ${
         popular
-          ? 'bg-gradient-to-b from-primary-500/20 to-transparent border-2 border-primary-500'
-          : 'border border-white/10 bg-white/5'
+          ? 'border-2 border-accent-500 shadow-lg scale-[1.02]'
+          : 'border border-slate-200/60 shadow-md hover:shadow-lg'
       }`}
     >
       {popular && (
-        <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 px-4 py-1 text-sm font-semibold text-white">
+        <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-accent-500 px-4 py-1.5 text-sm font-semibold text-white shadow-md">
           Most Popular
         </span>
       )}
       <div className="mb-6">
-        <h3 className="text-xl font-semibold text-white">{name}</h3>
-        <p className="mt-2 text-sm text-slate-400">{description}</p>
+        <h3 className="text-xl font-semibold text-primary-900">{name}</h3>
+        <p className="mt-2 text-sm text-secondary-500">{description}</p>
       </div>
-      <div className="mb-6">
-        <span className="text-4xl font-bold text-white">{price}</span>
-        <span className="text-slate-400">/month</span>
+      <div className="mb-8">
+        <span className="text-5xl font-bold text-primary-900 tracking-tight">{price}</span>
+        <span className="text-secondary-500 ml-1">/month</span>
       </div>
-      <ul className="mb-8 space-y-3">
+      <ul className="mb-8 space-y-4">
         {features.map((feature, index) => (
           <li key={index} className="flex items-start gap-3">
-            <CheckIcon className="h-5 w-5 flex-shrink-0 text-accent-500" />
-            <span className="text-sm text-slate-300">{feature}</span>
+            <div className="flex-shrink-0 h-5 w-5 rounded-full bg-accent-500/10 flex items-center justify-center mt-0.5">
+              <Check className="h-3 w-3 text-accent-600" />
+            </div>
+            <span className="text-sm text-secondary-600">{feature}</span>
           </li>
         ))}
       </ul>

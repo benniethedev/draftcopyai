@@ -8,6 +8,7 @@ interface FeatureCardProps {
   title: string;
   description: string;
   delay?: number;
+  large?: boolean;
 }
 
 export default function FeatureCard({
@@ -15,6 +16,7 @@ export default function FeatureCard({
   title,
   description,
   delay = 0,
+  large = false,
 }: FeatureCardProps) {
   return (
     <motion.div
@@ -22,13 +24,19 @@ export default function FeatureCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className="group relative rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:border-primary-500/50 hover:bg-white/10"
+      className={`group relative bg-white rounded-3xl border border-slate-200/60 p-8 shadow-md transition-all duration-300 hover:shadow-lg hover:border-slate-300/60 ${
+        large ? 'md:col-span-2 md:row-span-2 p-10' : ''
+      }`}
     >
-      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r from-primary-500 to-secondary-500 text-white">
+      <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-900/5 text-primary-900 transition-colors group-hover:bg-accent-500/10 group-hover:text-accent-600">
         {icon}
       </div>
-      <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
-      <p className="text-slate-400">{description}</p>
+      <h3 className={`font-semibold text-primary-900 mb-3 ${large ? 'text-2xl' : 'text-lg'}`}>
+        {title}
+      </h3>
+      <p className={`text-secondary-500 leading-relaxed ${large ? 'text-lg' : ''}`}>
+        {description}
+      </p>
     </motion.div>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CheckIcon, XMarkIcon, ShieldCheckIcon } from '@heroicons/react/24/solid';
+import { Check, X, Shield, ArrowRight, HelpCircle } from 'lucide-react';
 import Section, { SectionHeader } from '@/components/Section';
 import PricingCard from '@/components/PricingCard';
 import Button from '@/components/Button';
@@ -134,19 +134,20 @@ export default function PricingPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden gradient-bg pt-16 pb-8">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <section className="relative overflow-hidden bg-slate-50 grain pt-16 pb-8">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-100/30 via-transparent to-accent-100/20" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-primary-900">
               Pick a plan.{' '}
-              <span className="gradient-text">Know the cost.</span>
+              <span className="text-accent-500">Know the cost.</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-secondary-500 leading-relaxed">
               No per-word fees. No hidden charges. No awkward invoice surprises.
               Just flat monthly pricing for as much content as you need.
             </p>
@@ -172,26 +173,26 @@ export default function PricingPage() {
       </Section>
 
       {/* Money-back guarantee */}
-      <Section dark>
-        <div className="text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex flex-col items-center"
-          >
-            <div className="h-20 w-20 rounded-full bg-gradient-to-r from-accent-500 to-accent-600 flex items-center justify-center mb-6">
-              <ShieldCheckIcon className="h-10 w-10 text-white" />
+      <Section alternate>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <div className="inline-flex flex-col items-center">
+            <div className="h-20 w-20 rounded-3xl bg-accent-500 flex items-center justify-center mb-6 shadow-md">
+              <Shield className="h-10 w-10 text-white" />
             </div>
-            <h2 className="text-2xl font-bold text-white mb-2">
+            <h2 className="text-2xl lg:text-3xl font-bold text-primary-900 mb-3">
               30-Day Money-Back Guarantee
             </h2>
-            <p className="text-slate-400 max-w-lg">
+            <p className="text-secondary-500 max-w-lg leading-relaxed">
               Not happy after 30 days? Full refund, no awkward conversations.
-              We think you'll stick around, but if not — no hard feelings.
+              We think you'll stick around, but if not, no hard feelings.
             </p>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </Section>
 
       {/* Feature Comparison Table */}
@@ -200,24 +201,24 @@ export default function PricingPage() {
           title="Side-by-side comparison"
           description="Here's exactly what you get at each tier. No asterisks."
         />
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto rounded-2xl border border-slate-200/60 bg-white shadow-md">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-white/10">
-                <th className="py-4 px-4 text-left text-sm font-medium text-slate-400">
+              <tr className="border-b border-slate-200/60 bg-slate-50/50">
+                <th className="py-5 px-6 text-left text-sm font-medium text-secondary-500">
                   Feature
                 </th>
-                <th className="py-4 px-4 text-center text-sm font-medium text-white">
+                <th className="py-5 px-6 text-center text-sm font-semibold text-primary-900">
                   Starter
-                  <span className="block text-slate-400 font-normal">$499/mo</span>
+                  <span className="block text-secondary-500 font-normal">$499/mo</span>
                 </th>
-                <th className="py-4 px-4 text-center text-sm font-medium text-primary-400">
+                <th className="py-5 px-6 text-center text-sm font-semibold text-accent-600 bg-accent-50/50">
                   Growth
-                  <span className="block text-slate-400 font-normal">$999/mo</span>
+                  <span className="block text-secondary-500 font-normal">$999/mo</span>
                 </th>
-                <th className="py-4 px-4 text-center text-sm font-medium text-white">
+                <th className="py-5 px-6 text-center text-sm font-semibold text-primary-900">
                   Scale
-                  <span className="block text-slate-400 font-normal">$1,999/mo</span>
+                  <span className="block text-secondary-500 font-normal">$1,999/mo</span>
                 </th>
               </tr>
             </thead>
@@ -229,21 +230,25 @@ export default function PricingPage() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.03 }}
-                  className="border-b border-white/5"
+                  className="border-b border-slate-100 last:border-0"
                 >
-                  <td className="py-4 px-4 text-sm text-slate-300">
+                  <td className="py-4 px-6 text-sm text-secondary-600">
                     {feature.name}
                   </td>
                   {(['starter', 'growth', 'scale'] as const).map((plan) => (
-                    <td key={plan} className="py-4 px-4 text-center">
+                    <td key={plan} className={`py-4 px-6 text-center ${plan === 'growth' ? 'bg-accent-50/30' : ''}`}>
                       {typeof feature[plan] === 'boolean' ? (
                         feature[plan] ? (
-                          <CheckIcon className="h-5 w-5 text-accent-500 mx-auto" />
+                          <div className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-accent-100">
+                            <Check className="h-4 w-4 text-accent-600" />
+                          </div>
                         ) : (
-                          <XMarkIcon className="h-5 w-5 text-slate-600 mx-auto" />
+                          <div className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-slate-100">
+                            <X className="h-4 w-4 text-slate-400" />
+                          </div>
                         )
                       ) : (
-                        <span className="text-sm text-slate-300">
+                        <span className="text-sm text-secondary-600 font-medium">
                           {feature[plan]}
                         </span>
                       )}
@@ -257,18 +262,23 @@ export default function PricingPage() {
       </Section>
 
       {/* CTA */}
-      <Section dark>
+      <Section alternate>
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary-100 px-4 py-2 text-sm font-medium text-primary-700 mb-6">
+            <HelpCircle className="h-4 w-4" />
             Still have questions?
+          </div>
+          <h2 className="text-3xl lg:text-4xl font-bold text-primary-900 mb-4">
+            Let's chat
           </h2>
-          <p className="text-slate-400 mb-8 max-w-lg mx-auto">
-            Let's talk. No sales pitch — just an honest conversation about
+          <p className="text-secondary-500 mb-10 max-w-lg mx-auto leading-relaxed">
+            No sales pitch, just an honest conversation about
             whether we're a good fit for what you need.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button href="/contact" variant="primary" size="lg">
               Start Free Trial
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button href="/contact" variant="outline" size="lg">
               Book a Call

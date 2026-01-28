@@ -7,19 +7,19 @@ interface SectionProps {
   children: ReactNode;
   className?: string;
   id?: string;
-  dark?: boolean;
+  alternate?: boolean;
 }
 
 export default function Section({
   children,
   className = '',
   id,
-  dark = false,
+  alternate = false,
 }: SectionProps) {
   return (
     <section
       id={id}
-      className={`py-16 md:py-24 ${dark ? 'bg-slate-900/50' : ''} ${className}`}
+      className={`py-20 md:py-28 ${alternate ? 'bg-white' : 'bg-slate-50'} ${className}`}
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -46,17 +46,17 @@ export function SectionHeader({
   centered?: boolean;
 }) {
   return (
-    <div className={`max-w-3xl ${centered ? 'mx-auto text-center' : ''} mb-12`}>
+    <div className={`max-w-3xl ${centered ? 'mx-auto text-center' : ''} mb-16`}>
       {badge && (
-        <span className="inline-block rounded-full bg-primary-500/10 px-4 py-1 text-sm font-medium text-primary-400 mb-4">
+        <span className="inline-block rounded-full bg-accent-500/10 px-4 py-1.5 text-sm font-medium text-accent-600 mb-4">
           {badge}
         </span>
       )}
-      <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+      <h2 className="text-3xl font-bold tracking-tight text-primary-900 sm:text-4xl lg:text-5xl">
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-lg text-slate-400">{description}</p>
+        <p className="mt-5 text-lg text-secondary-500 leading-relaxed">{description}</p>
       )}
     </div>
   );

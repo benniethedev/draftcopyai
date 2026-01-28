@@ -4,23 +4,35 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
-  title: 'DraftCopyAI - AI-Powered Content, Human Quality',
+  title: 'DraftCopyAI - Content That Sounds Like You Wrote It',
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   description:
-    'Scale your content marketing with AI-powered blog posts, social content, and email sequences. Professional quality content delivered fast.',
+    'Scale your content marketing with AI speed and human polish. Blog posts, social content, and email sequences delivered fast, in your brand voice.',
   keywords: [
     'AI content writing',
     'blog writing service',
     'content marketing',
     'SEO content',
     'AI copywriting',
+    'B2B content',
   ],
   openGraph: {
-    title: 'DraftCopyAI - AI-Powered Content, Human Quality',
+    title: 'DraftCopyAI - Content That Sounds Like You Wrote It',
     description:
-      'Scale your content marketing with AI-powered blog posts, social content, and email sequences.',
+      'Scale your content marketing with AI speed and human polish. Blog posts, social content, and email sequences.',
     url: 'https://draftcopyai.com',
     siteName: 'DraftCopyAI',
     images: [
@@ -36,9 +48,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'DraftCopyAI - AI-Powered Content, Human Quality',
+    title: 'DraftCopyAI - Content That Sounds Like You Wrote It',
     description:
-      'Scale your content marketing with AI-powered blog posts, social content, and email sequences.',
+      'Scale your content marketing with AI speed and human polish. Blog posts, social content, and email sequences.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -54,7 +66,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.className} antialiased bg-slate-50`}>
         <Header />
         <main className="min-h-screen pt-16">{children}</main>
         <Footer />

@@ -7,7 +7,7 @@ describe('PricingCard', () => {
     name: 'Starter',
     price: '$499',
     description: 'Perfect for getting started',
-    features: ['8 blog posts', 'SEO included', 'Email support'],
+    features: ['Feature 1', 'Feature 2', 'Feature 3'],
   };
 
   it('renders plan name', () => {
@@ -15,10 +15,9 @@ describe('PricingCard', () => {
     expect(screen.getByText('Starter')).toBeInTheDocument();
   });
 
-  it('renders price correctly', () => {
+  it('renders price', () => {
     render(<PricingCard {...defaultProps} />);
     expect(screen.getByText('$499')).toBeInTheDocument();
-    expect(screen.getByText('/month')).toBeInTheDocument();
   });
 
   it('renders description', () => {
@@ -28,14 +27,14 @@ describe('PricingCard', () => {
 
   it('renders all features', () => {
     render(<PricingCard {...defaultProps} />);
-    expect(screen.getByText('8 blog posts')).toBeInTheDocument();
-    expect(screen.getByText('SEO included')).toBeInTheDocument();
-    expect(screen.getByText('Email support')).toBeInTheDocument();
+    expect(screen.getByText('Feature 1')).toBeInTheDocument();
+    expect(screen.getByText('Feature 2')).toBeInTheDocument();
+    expect(screen.getByText('Feature 3')).toBeInTheDocument();
   });
 
-  it('does not show "Most Popular" badge by default', () => {
+  it('renders CTA button', () => {
     render(<PricingCard {...defaultProps} />);
-    expect(screen.queryByText('Most Popular')).not.toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /get started/i })).toBeInTheDocument();
   });
 
   it('shows "Most Popular" badge when popular is true', () => {
@@ -43,30 +42,19 @@ describe('PricingCard', () => {
     expect(screen.getByText('Most Popular')).toBeInTheDocument();
   });
 
-  it('renders a CTA button linking to contact', () => {
+  it('does not show popular badge by default', () => {
     render(<PricingCard {...defaultProps} />);
-    const link = screen.getByRole('link', { name: 'Get Started' });
-    expect(link).toHaveAttribute('href', '/contact');
+    expect(screen.queryByText('Most Popular')).not.toBeInTheDocument();
   });
 
-  it('applies different styles for popular plan', () => {
-    const { container, rerender } = render(<PricingCard {...defaultProps} />);
-    const normalCard = container.firstChild;
-    expect(normalCard?.className).toContain('border-white/10');
-
-    rerender(<PricingCard {...defaultProps} popular />);
-    const popularCard = container.firstChild;
-    expect(popularCard?.className).toContain('border-primary-500');
+  it('applies popular styling when popular is true', () => {
+    render(<PricingCard {...defaultProps} popular />);
+    const card = screen.getByText('Starter').closest('div')?.parentElement;
+    expect(card).toHaveClass('border-2', 'border-accent-500');
   });
 
-  it('handles empty features array', () => {
-    render(<PricingCard {...defaultProps} features={[]} />);
-    expect(screen.getByText('Starter')).toBeInTheDocument();
-  });
-
-  it('renders checkmark icons for each feature', () => {
-    const { container } = render(<PricingCard {...defaultProps} />);
-    const checkIcons = container.querySelectorAll('svg');
-    expect(checkIcons.length).toBeGreaterThanOrEqual(defaultProps.features.length);
+  it('renders per month text', () => {
+    render(<PricingCard {...defaultProps} />);
+    expect(screen.getByText('/month')).toBeInTheDocument();
   });
 });

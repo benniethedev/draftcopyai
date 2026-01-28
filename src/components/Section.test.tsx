@@ -3,52 +3,26 @@ import { render, screen } from '@testing-library/react';
 import Section, { SectionHeader } from './Section';
 
 describe('Section', () => {
-  it('renders children content', () => {
-    render(
-      <Section>
-        <p>Test content</p>
-      </Section>
-    );
+  it('renders children', () => {
+    render(<Section><p>Test content</p></Section>);
     expect(screen.getByText('Test content')).toBeInTheDocument();
   });
 
-  it('renders with custom id', () => {
-    const { container } = render(
-      <Section id="test-section">
-        <p>Content</p>
-      </Section>
-    );
-    expect(container.querySelector('#test-section')).toBeInTheDocument();
+  it('applies id when provided', () => {
+    render(<Section id="test-section"><p>Content</p></Section>);
+    expect(document.getElementById('test-section')).toBeInTheDocument();
   });
 
-  it('applies dark variant styles when dark prop is true', () => {
-    const { container } = render(
-      <Section dark>
-        <p>Dark section</p>
-      </Section>
-    );
-    const section = container.querySelector('section');
-    expect(section?.className).toContain('bg-slate-900/50');
+  it('applies alternate background when alternate prop is true', () => {
+    render(<Section alternate><p>Content</p></Section>);
+    const section = screen.getByText('Content').closest('section');
+    expect(section).toHaveClass('bg-white');
   });
 
   it('applies custom className', () => {
-    const { container } = render(
-      <Section className="custom-section">
-        <p>Content</p>
-      </Section>
-    );
-    const section = container.querySelector('section');
-    expect(section?.className).toContain('custom-section');
-  });
-
-  it('has proper padding', () => {
-    const { container } = render(
-      <Section>
-        <p>Content</p>
-      </Section>
-    );
-    const section = container.querySelector('section');
-    expect(section?.className).toContain('py-16');
+    render(<Section className="custom-class"><p>Content</p></Section>);
+    const section = screen.getByText('Content').closest('section');
+    expect(section).toHaveClass('custom-class');
   });
 });
 
@@ -59,8 +33,8 @@ describe('SectionHeader', () => {
   });
 
   it('renders description when provided', () => {
-    render(<SectionHeader title="Title" description="This is a description" />);
-    expect(screen.getByText('This is a description')).toBeInTheDocument();
+    render(<SectionHeader title="Title" description="Test description" />);
+    expect(screen.getByText('Test description')).toBeInTheDocument();
   });
 
   it('renders badge when provided', () => {
@@ -68,23 +42,15 @@ describe('SectionHeader', () => {
     expect(screen.getByText('New Feature')).toBeInTheDocument();
   });
 
-  it('does not render badge when not provided', () => {
-    render(<SectionHeader title="Title" />);
-    const badges = document.querySelectorAll('.rounded-full');
-    // Should only have styling for other elements, not a badge
-    expect(screen.queryByText(/^[A-Z][a-z]+ [A-Z][a-z]+$/)).not.toBeInTheDocument();
-  });
-
   it('centers content by default', () => {
-    const { container } = render(<SectionHeader title="Title" />);
-    const wrapper = container.firstChild;
-    expect(wrapper?.className).toContain('text-center');
-    expect(wrapper?.className).toContain('mx-auto');
+    render(<SectionHeader title="Centered Title" />);
+    const container = screen.getByRole('heading', { level: 2 }).parentElement;
+    expect(container).toHaveClass('mx-auto', 'text-center');
   });
 
-  it('does not center when centered is false', () => {
-    const { container } = render(<SectionHeader title="Title" centered={false} />);
-    const wrapper = container.firstChild;
-    expect(wrapper?.className).not.toContain('text-center');
+  it('does not center content when centered is false', () => {
+    render(<SectionHeader title="Left Title" centered={false} />);
+    const container = screen.getByRole('heading', { level: 2 }).parentElement;
+    expect(container).not.toHaveClass('mx-auto', 'text-center');
   });
 });

@@ -30,17 +30,17 @@ export default function Button({
 
   const variants = {
     primary:
-      'bg-gradient-to-r from-accent-500 to-accent-600 text-white shadow-lg shadow-accent-500/25 hover:shadow-accent-500/40 hover:scale-105',
+      'bg-accent-500 text-white shadow-md hover:bg-accent-600 hover:shadow-lg hover:scale-[1.02]',
     secondary:
-      'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 hover:scale-105',
+      'bg-primary-900 text-white shadow-md hover:bg-primary-800 hover:shadow-lg hover:scale-[1.02]',
     outline:
-      'border border-slate-600 text-slate-300 hover:border-slate-500 hover:text-white hover:bg-white/5',
+      'border-2 border-slate-300 text-secondary-600 hover:border-primary-900 hover:text-primary-900 hover:bg-slate-50',
   };
 
   const sizes = {
     sm: 'px-4 py-2 text-sm',
     md: 'px-6 py-2.5 text-sm',
-    lg: 'px-8 py-3 text-base',
+    lg: 'px-8 py-3.5 text-base',
   };
 
   const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className} ${

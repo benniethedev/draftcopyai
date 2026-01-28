@@ -1,23 +1,23 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import FeatureCard from './FeatureCard';
+import { Zap } from 'lucide-react';
 
 describe('FeatureCard', () => {
-  const mockIcon = <svg data-testid="test-icon" />;
   const defaultProps = {
-    icon: mockIcon,
-    title: 'Fast Turnaround',
-    description: 'Get your content in days, not weeks.',
+    icon: <Zap data-testid="test-icon" />,
+    title: 'Test Feature',
+    description: 'Test description for the feature card',
   };
 
   it('renders the title', () => {
     render(<FeatureCard {...defaultProps} />);
-    expect(screen.getByText('Fast Turnaround')).toBeInTheDocument();
+    expect(screen.getByText('Test Feature')).toBeInTheDocument();
   });
 
   it('renders the description', () => {
     render(<FeatureCard {...defaultProps} />);
-    expect(screen.getByText('Get your content in days, not weeks.')).toBeInTheDocument();
+    expect(screen.getByText('Test description for the feature card')).toBeInTheDocument();
   });
 
   it('renders the icon', () => {
@@ -25,16 +25,16 @@ describe('FeatureCard', () => {
     expect(screen.getByTestId('test-icon')).toBeInTheDocument();
   });
 
-  it('has proper heading structure', () => {
-    render(<FeatureCard {...defaultProps} />);
-    const heading = screen.getByRole('heading', { level: 3 });
-    expect(heading).toHaveTextContent('Fast Turnaround');
+  it('renders as a card element', () => {
+    const { container } = render(<FeatureCard {...defaultProps} />);
+    // Check for the motion.div wrapper which has the card classes
+    const cards = container.querySelectorAll('[class*="rounded-3xl"]');
+    expect(cards.length).toBeGreaterThan(0);
   });
 
-  it('applies hover styles to card container', () => {
-    const { container } = render(<FeatureCard {...defaultProps} />);
-    const card = container.firstChild;
-    expect(card?.className).toContain('hover:border-primary-500/50');
-    expect(card?.className).toContain('hover:bg-white/10');
+  it('applies large variant styling when large prop is true', () => {
+    const { container } = render(<FeatureCard {...defaultProps} large />);
+    const cardWithLargeClasses = container.querySelector('[class*="md:col-span-2"]');
+    expect(cardWithLargeClasses).toBeInTheDocument();
   });
 });

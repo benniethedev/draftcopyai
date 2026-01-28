@@ -1,21 +1,56 @@
 <!doctype html>
 <meta charset="utf-8" />
-<title>openai-image-gen</title>
+<title>DraftCopyAI Logo Concepts</title>
 <style>
   :root { color-scheme: dark; }
   body { margin: 24px; font: 14px/1.4 ui-sans-serif, system-ui; background: #0b0f14; color: #e8edf2; }
   h1 { font-size: 18px; margin: 0 0 16px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
-  figure { margin: 0; padding: 12px; border: 1px solid #1e2a36; border-radius: 14px; background: #0f1620; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  figure { margin: 0; padding: 12px; border: 1px solid #1e2a36; border-radius: 14px; background: #0f1620; position: relative; }
+  figure.chosen { border: 2px solid #22c55e; background: #0f1620; }
+  figure.chosen::after { content: '✅ CHOSEN'; position: absolute; top: 8px; right: 8px; background: #22c55e; color: #000; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
   img { width: 100%; height: auto; border-radius: 10px; display: block; }
-  figcaption { margin-top: 10px; color: #b7c2cc; }
-  code { color: #9cd1ff; }
+  figcaption { margin-top: 10px; color: #b7c2cc; font-size: 12px; }
+  .title { font-weight: 600; color: #fff; margin-bottom: 4px; }
+  .notes { margin-top: 24px; padding: 16px; background: #111820; border-radius: 10px; border: 1px solid #1e2a36; }
+  .notes h2 { margin: 0 0 12px; font-size: 14px; }
+  .notes ul { margin: 0; padding-left: 20px; }
+  .notes li { margin: 4px 0; }
 </style>
-<h1>openai-image-gen</h1>
-<p>Output: <code>.</code></p>
+<h1>DraftCopyAI Logo Concepts</h1>
+
 <div class="grid">
-<figure>
-  <a href="001-minimalist-modern-logo-mark-for-draftcop.png"><img src="001-minimalist-modern-logo-mark-for-draftcop.png" loading="lazy" /></a>
-  <figcaption>Minimalist modern logo mark for 'DraftCopy' content writing agency. Clean geometric lettermark combining D and C, or abstract flowing pen/document icon. Flat design, single navy blue color on pure white background, suitable for tech startup. No text in image, icon mark only, vector style, sophisticated and brandable</figcaption>
-</figure>
+  <figure>
+    <a href="001-minimalist-modern-logo-mark-for-draftcop.png"><img src="001-minimalist-modern-logo-mark-for-draftcop.png" loading="lazy" /></a>
+    <figcaption>
+      <div class="title">Option 1: Orbital Pen Mark</div>
+      Pen with orbital circles and document frame. Too complex for favicon use.
+    </figcaption>
+  </figure>
+
+  <figure>
+    <a href="001-sophisticated-minimal-wordmark-logo-dc-m.png"><img src="001-sophisticated-minimal-wordmark-logo-dc-m.png" loading="lazy" /></a>
+    <figcaption>
+      <div class="title">Option 2: DC Monogram</div>
+      Interlocking D+C lettermark. Elegant but moderate scalability at small sizes.
+    </figcaption>
+  </figure>
+
+  <figure class="chosen">
+    <a href="001-ultra-minimal-modern-logo-icon-for-writi.png"><img src="001-ultra-minimal-modern-logo-icon-for-writi.png" loading="lazy" /></a>
+    <figcaption>
+      <div class="title">Option 3: D Icon with Pen</div>
+      Clean D-shaped container with integrated pen. Best scalability for favicon/app icon.
+    </figcaption>
+  </figure>
+</div>
+
+<div class="notes">
+  <h2>Selection Notes</h2>
+  <ul>
+    <li><strong>Chosen:</strong> Option 3 (Ultra-minimal D icon)</li>
+    <li><strong>Reason:</strong> The D container remains recognizable at 16x16, pen symbolism clear, modern app-icon styling</li>
+    <li><strong>Assets created:</strong> logo.png, favicon-16x16.png, favicon-32x32.png, apple-touch-icon.png</li>
+    <li><strong>Location:</strong> ~/projects/draftcopyai/public/</li>
+  </ul>
 </div>

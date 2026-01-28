@@ -1,7 +1,7 @@
 // Portal types for DraftCopyAI Client Portal
 
 export type ProjectStatus = 'draft' | 'in_review' | 'revision' | 'approved' | 'completed';
-export type ContentType = 'blog_post' | 'social_media' | 'email_sequence' | 'landing_page' | 'case_study';
+export type ContentType = 'blog_post' | 'social_media' | 'email_sequence' | 'landing_page' | 'case_study' | 'ad_copy' | 'product_description' | 'whitepaper';
 export type Priority = 'normal' | 'rush' | 'same_day';
 
 export interface Brief {
@@ -15,8 +15,36 @@ export interface Brief {
   additionalNotes: string;
   brandGuidelines?: string;
   competitorUrls?: string[];
+  // New fields for enhanced brief
+  keyMessages?: string[];
+  callToAction?: string;
+  specificRequirements?: string;
   createdAt: Date;
   updatedAt: Date;
+}
+
+// Form data type for the content brief intake form
+export interface ContentBriefFormData {
+  title: string;
+  contentType: ContentType;
+  targetAudience: string;
+  tone: string;
+  customTone?: string;
+  brandGuidelines?: string;
+  keyMessages: string[];
+  competitorUrls: string[];
+  wordCount: number;
+  targetKeywords: string[];
+  callToAction: string;
+  specificRequirements: string;
+  priority: Priority;
+}
+
+// Draft save state
+export interface BriefDraft {
+  formData: Partial<ContentBriefFormData>;
+  currentStep: number;
+  savedAt: Date;
 }
 
 export interface Draft {
@@ -69,6 +97,9 @@ export const CONTENT_TYPE_LABELS: Record<ContentType, string> = {
   email_sequence: 'Email Sequence',
   landing_page: 'Landing Page',
   case_study: 'Case Study',
+  ad_copy: 'Ad Copy',
+  product_description: 'Product Description',
+  whitepaper: 'Whitepaper / Guide',
 };
 
 export const STATUS_LABELS: Record<ProjectStatus, string> = {

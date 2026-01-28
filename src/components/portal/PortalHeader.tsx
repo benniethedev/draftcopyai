@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Plus, Bell, User, LogOut, Settings, HelpCircle } from 'lucide-react';
+import { Menu, X, Plus, Bell, User, LogOut, Settings, HelpCircle, FileText } from 'lucide-react';
 import { Client } from '@/types/portal';
 
 interface PortalHeaderProps {
@@ -46,6 +46,12 @@ export default function PortalHeader({ client }: PortalHeaderProps) {
                 className="text-sm font-medium text-secondary-500 hover:text-primary-900 transition-colors"
               >
                 Projects
+              </Link>
+              <Link
+                href="/portal/templates"
+                className="text-sm font-medium text-secondary-500 hover:text-primary-900 transition-colors"
+              >
+                Templates
               </Link>
               <Link
                 href="/portal/briefs/new"
@@ -168,6 +174,16 @@ export default function PortalHeader({ client }: PortalHeaderProps) {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Projects
+                </Link>
+                <Link
+                  href="/portal/templates"
+                  className="block px-3 py-2 text-base font-medium text-secondary-600 hover:text-primary-900 hover:bg-slate-50 rounded-lg"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <span className="flex items-center gap-2">
+                    <FileText className="h-4 w-4" />
+                    Templates
+                  </span>
                 </Link>
                 <Link
                   href="/portal/briefs/new"

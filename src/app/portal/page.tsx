@@ -10,8 +10,9 @@ import {
   CheckCircle,
   Plus,
   ArrowRight,
+  Sparkles,
 } from 'lucide-react';
-import { ProjectCard, StatsCard } from '@/components/portal';
+import { ProjectCard, StatsCard, OnboardingChecklist } from '@/components/portal';
 import { mockClient, mockProjects, mockStats } from '@/lib/mock-data';
 import CheckoutStatus from '@/components/CheckoutStatus';
 
@@ -53,6 +54,9 @@ export default function PortalDashboard() {
           Here's what's happening with your content.
         </p>
       </motion.div>
+
+      {/* Onboarding Checklist - Shows for new users */}
+      <OnboardingChecklist />
 
       {/* Stats Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -126,6 +130,13 @@ export default function PortalDashboard() {
               >
                 <FileText className="h-5 w-5" />
                 <span className="font-medium">View All Projects</span>
+              </Link>
+              <Link
+                href="/portal/templates"
+                className="flex items-center gap-3 p-3 rounded-xl bg-purple-50 text-purple-700 hover:bg-purple-100 transition-colors"
+              >
+                <Sparkles className="h-5 w-5" />
+                <span className="font-medium">LinkedIn Templates</span>
               </Link>
             </div>
           </motion.div>

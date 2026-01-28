@@ -6,6 +6,7 @@ import {
   HeartIcon,
   ShieldCheckIcon,
   RocketLaunchIcon,
+  CheckIcon,
 } from '@heroicons/react/24/outline';
 import Section, { SectionHeader } from '@/components/Section';
 import Button from '@/components/Button';
@@ -13,27 +14,27 @@ import Button from '@/components/Button';
 const values = [
   {
     icon: <LightBulbIcon className="h-6 w-6" />,
-    title: 'Innovation First',
+    title: 'Ship Fast, Learn Faster',
     description:
-      'We continuously push the boundaries of what AI can do for content creation while maintaining human oversight.',
+      'We move quickly because content marketing waits for no one. But we track everything and improve constantly.',
   },
   {
     icon: <HeartIcon className="h-6 w-6" />,
-    title: 'Customer Obsessed',
+    title: 'Your Success Is Our Success',
     description:
-      'Your success is our success. We go above and beyond to ensure every piece of content exceeds expectations.',
+      'If your content isn\'t driving results, we\'re failing too. We care about outcomes, not just output.',
   },
   {
     icon: <ShieldCheckIcon className="h-6 w-6" />,
-    title: 'Quality Always',
+    title: 'Quality Over Quantity',
     description:
-      'We never compromise on quality. Every piece is reviewed, refined, and polished before delivery.',
+      'We could churn out more content faster. We don\'t. Every piece gets human attention.',
   },
   {
     icon: <RocketLaunchIcon className="h-6 w-6" />,
-    title: 'Speed Matters',
+    title: 'No Excuses on Delivery',
     description:
-      'In content marketing, timing is everything. We deliver fast without cutting corners.',
+      'When we say 48 hours, we mean 48 hours. Deadlines matter. We don\'t miss them.',
   },
 ];
 
@@ -41,30 +42,30 @@ const team = [
   {
     name: 'Alex Morgan',
     role: 'CEO & Co-founder',
-    bio: 'Former content director at a Fortune 500 company. 15+ years in content marketing.',
+    bio: 'Ran content for a Fortune 500 company. Got tired of watching good marketing teams drown in content demands.',
   },
   {
     name: 'Jordan Lee',
     role: 'CTO & Co-founder',
-    bio: 'AI researcher with a background in NLP. Previously led ML teams at major tech companies.',
+    bio: 'Spent a decade doing NLP research. Now uses that knowledge to make AI actually useful for real writing.',
   },
   {
     name: 'Sam Rivera',
     role: 'Head of Content',
-    bio: 'Award-winning journalist and editor. Built content teams at multiple successful startups.',
+    bio: 'Former journalist, former agency lead. Knows what makes content work and what makes it forgettable.',
   },
   {
     name: 'Taylor Chen',
     role: 'Head of Customer Success',
-    bio: 'Customer experience expert. Passionate about helping clients achieve their content goals.',
+    bio: 'The person who makes sure you actually get value. If you have a problem, Taylor fixes it.',
   },
 ];
 
 const stats = [
   { value: '50K+', label: 'Articles Delivered' },
-  { value: '500+', label: 'Happy Clients' },
-  { value: '98%', label: 'Client Retention' },
-  { value: '4.9/5', label: 'Average Rating' },
+  { value: '500+', label: 'Customers' },
+  { value: '98%', label: 'Renewal Rate' },
+  { value: '4.9/5', label: 'Avg Rating' },
 ];
 
 export default function AboutPage() {
@@ -80,12 +81,12 @@ export default function AboutPage() {
             className="text-center"
           >
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white">
-              About{' '}
+              The Team Behind{' '}
               <span className="gradient-text">DraftCopyAI</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-              We&apos;re on a mission to democratize high-quality content creation
-              through the power of AI and human expertise.
+              We got tired of watching smart marketing teams waste time on content 
+              production. So we built something better.
             </p>
           </motion.div>
         </div>
@@ -100,28 +101,27 @@ export default function AboutPage() {
             viewport={{ once: true }}
           >
             <span className="inline-block rounded-full bg-primary-500/10 px-4 py-1 text-sm font-medium text-primary-400 mb-4">
-              Our Mission
+              Why We Exist
             </span>
             <h2 className="text-3xl font-bold text-white mb-6">
-              Making premium content accessible to every business
+              Good content shouldn't require a full team
             </h2>
             <div className="space-y-4 text-slate-400">
               <p>
-                Content marketing shouldn&apos;t be reserved for companies with big
-                budgets and large teams. Every business deserves access to
-                high-quality, SEO-optimized content that drives results.
+                Content marketing works. Everyone knows it. But producing quality 
+                content consistently? That's a full-time job. Actually, it's several 
+                full-time jobs.
               </p>
               <p>
-                That&apos;s why we built DraftCopyAI—a service that combines the
-                efficiency of artificial intelligence with the creativity and
-                judgment of experienced human editors. The result? Premium content
-                at a fraction of the traditional cost.
+                Most companies face a choice: hire expensive writers, settle for 
+                mediocre freelance work, or burn out trying to do it themselves. 
+                None of those options are great.
               </p>
               <p>
-                We believe the future of content isn&apos;t AI alone or humans
-                alone—it&apos;s the powerful combination of both. Our hybrid approach
-                delivers the best of both worlds: AI speed and scale with human
-                quality and nuance.
+                We built DraftCopyAI because we believe there's a better way. 
+                AI handles the research and first drafts — the tedious parts. 
+                Humans handle the judgment calls — the parts that matter. You get 
+                quality content without the overhead.
               </p>
             </div>
           </motion.div>
@@ -131,7 +131,7 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="grid grid-cols-2 gap-4"
           >
-            {stats.map((stat, index) => (
+            {stats.map((stat) => (
               <div
                 key={stat.label}
                 className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center"
@@ -149,9 +149,8 @@ export default function AboutPage() {
       {/* Why AI + Human */}
       <Section dark>
         <SectionHeader
-          badge="Our Approach"
-          title="Why AI + Human Review?"
-          description="The best content comes from combining AI capabilities with human expertise."
+          title="Why not just use AI? Or just use humans?"
+          description="Because neither one alone is good enough. Here's the real talk."
         />
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <motion.div
@@ -161,28 +160,24 @@ export default function AboutPage() {
             className="rounded-2xl border border-white/10 bg-white/5 p-6"
           >
             <h3 className="text-xl font-semibold text-white mb-4">
-              What AI Brings
+              What AI Does Well
             </h3>
             <ul className="space-y-3 text-slate-400">
               <li className="flex items-start gap-3">
-                <span className="text-accent-400">✓</span>
-                Lightning-fast research and draft creation
+                <CheckIcon className="h-5 w-5 flex-shrink-0 text-accent-400 mt-0.5" />
+                Research and synthesis — fast
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-accent-400">✓</span>
-                Consistent SEO optimization
+                <CheckIcon className="h-5 w-5 flex-shrink-0 text-accent-400 mt-0.5" />
+                Consistent SEO structure every time
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-accent-400">✓</span>
-                Scalable content production
+                <CheckIcon className="h-5 w-5 flex-shrink-0 text-accent-400 mt-0.5" />
+                No writer's block, no sick days
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-accent-400">✓</span>
-                Data-driven topic insights
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-accent-400">✓</span>
-                24/7 availability
+                <CheckIcon className="h-5 w-5 flex-shrink-0 text-accent-400 mt-0.5" />
+                Scales without the hiring pain
               </li>
             </ul>
           </motion.div>
@@ -198,36 +193,36 @@ export default function AboutPage() {
             </h3>
             <ul className="space-y-3 text-slate-400">
               <li className="flex items-start gap-3">
-                <span className="text-primary-400">✓</span>
-                Brand voice and tone alignment
+                <CheckIcon className="h-5 w-5 flex-shrink-0 text-primary-400 mt-0.5" />
+                Brand voice — the subtle stuff AI misses
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-primary-400">✓</span>
-                Fact-checking and verification
+                <CheckIcon className="h-5 w-5 flex-shrink-0 text-primary-400 mt-0.5" />
+                Fact-checking claims that matter
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-primary-400">✓</span>
-                Creative storytelling
+                <CheckIcon className="h-5 w-5 flex-shrink-0 text-primary-400 mt-0.5" />
+                Fixing the weird AI phrasing
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-primary-400">✓</span>
-                Nuanced understanding of context
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary-400">✓</span>
-                Quality assurance
+                <CheckIcon className="h-5 w-5 flex-shrink-0 text-primary-400 mt-0.5" />
+                Knowing when something just feels off
               </li>
             </ul>
           </motion.div>
         </div>
+        <p className="text-center text-slate-400 mt-8 max-w-2xl mx-auto">
+          AI alone produces content that reads like... AI content. Humans alone 
+          can't scale. Together? You get the best of both without the downsides 
+          of either.
+        </p>
       </Section>
 
       {/* Values */}
       <Section>
         <SectionHeader
-          badge="Our Values"
-          title="What we stand for"
-          description="These principles guide everything we do at DraftCopyAI."
+          title="How we work"
+          description="Not corporate values — actual principles we use to make decisions."
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {values.map((value, index) => (
@@ -254,9 +249,8 @@ export default function AboutPage() {
       {/* Team */}
       <Section dark>
         <SectionHeader
-          badge="Our Team"
-          title="Meet the humans behind the AI"
-          description="A passionate team of content experts, AI researchers, and customer advocates."
+          title="The people behind the product"
+          description="We're a small team that cares a lot about doing good work."
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {team.map((member, index) => (
@@ -283,18 +277,17 @@ export default function AboutPage() {
       <Section>
         <div className="text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Join hundreds of satisfied customers
+            Ready to offload your content?
           </h2>
           <p className="text-slate-400 mb-8 max-w-lg mx-auto">
-            Experience the DraftCopyAI difference for yourself. Start your free
-            trial today.
+            Start a trial. See what we produce. Judge us on the work.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button href="/contact" variant="primary" size="lg">
               Get Started
             </Button>
             <Button href="/pricing" variant="outline" size="lg">
-              View Pricing
+              See Pricing
             </Button>
           </div>
         </div>

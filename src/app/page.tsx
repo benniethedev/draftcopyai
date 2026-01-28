@@ -10,6 +10,9 @@ import {
   SparklesIcon,
   RocketLaunchIcon,
   ChevronDownIcon,
+  XMarkIcon,
+  CheckIcon,
+  ShieldCheckIcon,
 } from '@heroicons/react/24/outline';
 import Button from '@/components/Button';
 import Section, { SectionHeader } from '@/components/Section';
@@ -21,48 +24,48 @@ import { useState } from 'react';
 const features = [
   {
     icon: <BoltIcon className="h-6 w-6" />,
-    title: 'Fast Turnaround',
+    title: 'Done in Days, Not Weeks',
     description:
-      'Get your content delivered in days, not weeks. Our AI-powered workflow means faster production without sacrificing quality.',
+      'Stop waiting around. Our hybrid workflow gets you polished content fast — without the corners-cut feeling.',
   },
   {
     icon: <MagnifyingGlassIcon className="h-6 w-6" />,
-    title: 'SEO Optimized',
+    title: 'Built for Google',
     description:
-      'Every piece is optimized for search engines with proper keywords, meta descriptions, and structure that Google loves.',
+      'Keywords, structure, meta tags — we handle the SEO stuff so your content actually gets found.',
   },
   {
     icon: <ArrowPathIcon className="h-6 w-6" />,
-    title: 'Unlimited Revisions',
+    title: 'Revisions Until It Hits',
     description:
-      'Not quite right? No problem. We offer unlimited revisions until you&apos;re completely satisfied with every piece.',
+      'Something feel off? Send it back. We tweak until you love it. No limits, no awkward conversations.',
   },
   {
     icon: <UserIcon className="h-6 w-6" />,
-    title: 'Dedicated Editor',
+    title: 'A Real Person Checks Everything',
     description:
-      'Every piece is reviewed by a human editor who ensures your brand voice shines through and quality stays high.',
+      'AI drafts fast. Humans catch weird phrasing, fact-check claims, and make sure it sounds like you.',
   },
 ];
 
 const steps = [
   {
     icon: <DocumentTextIcon className="h-8 w-8" />,
-    title: 'Submit Your Brief',
+    title: 'Tell Us What You Need',
     description:
-      'Tell us about your topic, target audience, and goals. Share your brand guidelines and we handle the rest.',
+      'Topic, keywords, audience — give us the basics. Share your brand guidelines if you have them. Takes 5 minutes.',
   },
   {
     icon: <SparklesIcon className="h-8 w-8" />,
-    title: 'AI Drafts Content',
+    title: 'We Write, Edit, Polish',
     description:
-      'Our AI creates the first draft, then human editors refine it to match your voice and ensure factual accuracy.',
+      'AI creates the first pass. Human editors shape it into something that sounds natural and checks out factually.',
   },
   {
     icon: <RocketLaunchIcon className="h-8 w-8" />,
-    title: 'You Publish',
+    title: 'You Hit Publish',
     description:
-      'Review, request revisions if needed, and publish. Watch your content drive traffic and conversions.',
+      'Review what we send. Need changes? Just ask. Happy with it? Post it and watch the traffic roll in.',
   },
 ];
 
@@ -70,28 +73,28 @@ const pricingPlans = [
   {
     name: 'Starter',
     price: '$499',
-    description: 'Perfect for small businesses just getting started with content.',
+    description: 'Getting serious about content but not ready to go all-in.',
     features: [
       '8 blog posts per month',
-      '1,500+ words per post',
-      'SEO optimization included',
+      '1,500+ words each',
+      'SEO baked in',
       'Unlimited revisions',
-      '48-hour delivery',
+      '48-hour turnaround',
       'Email support',
     ],
   },
   {
     name: 'Growth',
     price: '$999',
-    description: 'For growing teams that need consistent, quality content.',
+    description: 'For teams that need consistent output without the hiring headache.',
     features: [
       '20 blog posts per month',
-      '1,500+ words per post',
-      'Social media content (40 posts)',
-      'SEO optimization included',
+      '1,500+ words each',
+      '40 social posts included',
+      'SEO baked in',
       'Unlimited revisions',
-      '24-hour delivery',
-      'Dedicated account manager',
+      '24-hour turnaround',
+      'Your own account manager',
       'Priority support',
     ],
     popular: true,
@@ -99,18 +102,18 @@ const pricingPlans = [
   {
     name: 'Scale',
     price: '$1,999',
-    description: 'Enterprise-level content production for serious growth.',
+    description: 'Full content operation without building a full content team.',
     features: [
       '40 blog posts per month',
-      '2,000+ words per post',
-      'Social media content (100 posts)',
-      'Email sequences (4 per month)',
-      'SEO optimization included',
+      '2,000+ words each',
+      '100 social posts included',
+      '4 email sequences monthly',
+      'SEO baked in',
       'Unlimited revisions',
-      'Same-day delivery available',
-      'Dedicated content strategist',
-      'Slack integration',
-      'Custom reporting',
+      'Same-day delivery option',
+      'Dedicated strategist',
+      'Slack channel access',
+      'Monthly performance reports',
     ],
   },
 ];
@@ -118,21 +121,21 @@ const pricingPlans = [
 const testimonials = [
   {
     quote:
-      'DraftCopyAI transformed our content strategy. We went from 2 posts a month to 20, and our organic traffic tripled in 6 months.',
+      'We were doing maybe 2 posts a month before. Now we do 20. Organic traffic tripled in 6 months and I actually have time for other things.',
     author: 'Sarah Chen',
     role: 'Marketing Director',
     company: 'TechFlow',
   },
   {
     quote:
-      'The quality is incredible. I genuinely can&apos;t tell the difference between their content and what our in-house writers produce.',
+      'I was skeptical about AI content. But honestly? I can\'t tell the difference between this and what our senior writer produces. And it costs a third as much.',
     author: 'Marcus Johnson',
     role: 'Founder',
     company: 'GrowthLab',
   },
   {
     quote:
-      'Finally, a content service that actually understands B2B. The SEO results speak for themselves – page 1 rankings within weeks.',
+      'Most content services don\'t get B2B. These folks do. We hit page 1 for three target keywords within six weeks.',
     author: 'Emily Rodriguez',
     role: 'Head of Content',
     company: 'ScaleUp',
@@ -141,29 +144,29 @@ const testimonials = [
 
 const faqs = [
   {
-    question: 'How does the AI + human review process work?',
+    question: 'How does the AI + human thing actually work?',
     answer:
-      'Our AI creates the initial draft based on your brief and guidelines. Then, a human editor reviews every piece for accuracy, tone, and quality. This hybrid approach gives you the speed of AI with the nuance of human editing.',
+      'AI writes the first draft based on your brief. It\'s fast and handles structure well. Then a real editor goes through it — checking facts, fixing awkward bits, making sure it sounds like something a person wrote. You get speed without sacrificing quality.',
   },
   {
-    question: 'What if I&apos;m not satisfied with the content?',
+    question: 'What if I don\'t like what you send?',
     answer:
-      'We offer unlimited revisions on every piece. If something isn&apos;t quite right, just let us know and we&apos;ll revise it until you&apos;re happy. We also offer a 30-day money-back guarantee if you&apos;re not satisfied.',
+      'Send it back with notes. We\'ll revise it — as many times as needed until you\'re happy. And if you\'re still not feeling it after 30 days, we\'ll refund your money. No drama.',
   },
   {
-    question: 'Can you match my brand voice?',
+    question: 'Can you write in our brand voice?',
     answer:
-      'Absolutely. During onboarding, we&apos;ll learn your brand guidelines, tone, and style preferences. We can also analyze your existing content to ensure consistency.',
+      'Yes. During onboarding we\'ll dig into your style guidelines, look at your existing content, and figure out what makes your brand sound like your brand. Then we match it.',
   },
   {
-    question: 'How long does delivery take?',
+    question: 'How fast do you deliver?',
     answer:
-      'Standard delivery is 48 hours for Starter, 24 hours for Growth, and same-day available for Scale plans. Rush delivery is available for all plans at an additional cost.',
+      'Starter plan: 48 hours. Growth: 24 hours. Scale: same-day is available when you need it. Need something even faster? We can usually make it work — just ask.',
   },
   {
-    question: 'Do you write for any industry?',
+    question: 'What industries do you cover?',
     answer:
-      'We specialize in B2B SaaS, technology, fintech, and professional services. However, we can write for most industries – just reach out to discuss your specific needs.',
+      'We\'re strongest in B2B SaaS, tech, fintech, and professional services. But we\'ve written for e-commerce, healthcare, education — most things except highly regulated medical/legal content. If you\'re unsure, just ask.',
   },
 ];
 
@@ -185,29 +188,29 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1 }}
-              className="inline-block rounded-full bg-primary-500/10 px-4 py-1.5 text-sm font-medium text-primary-400 mb-6"
+              className="inline-flex items-center gap-2 rounded-full bg-primary-500/10 px-4 py-1.5 text-sm font-medium text-primary-400 mb-6"
             >
-              ✨ AI-Powered Content Marketing
+              <SparklesIcon className="h-4 w-4" />
+              Content that scales with you
             </motion.span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
-              AI-Powered Content,{' '}
-              <span className="gradient-text">Human Quality</span>
+              Write Less.{' '}
+              <span className="gradient-text">Publish More.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg sm:text-xl text-slate-400">
-              Scale your content marketing without scaling your team. Get SEO-optimized
-              blog posts, social content, and email sequences — all reviewed by human
-              editors.
+              You need 20 blog posts a month. You have time for maybe 2. 
+              We bridge that gap — AI speed, human polish, your brand voice.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button href="/contact" variant="primary" size="lg">
-                Get Started Free
+                Start Your Free Trial
               </Button>
               <Button href="/pricing" variant="outline" size="lg">
-                See Pricing
+                See What It Costs
               </Button>
             </div>
             <p className="mt-6 text-sm text-slate-500">
-              No credit card required • 30-day money-back guarantee
+              No credit card needed. 30-day money-back guarantee.
             </p>
           </motion.div>
 
@@ -221,54 +224,56 @@ export default function Home() {
       <Section dark>
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <span className="inline-block rounded-full bg-red-500/10 px-4 py-1 text-sm font-medium text-red-400 mb-4">
+            <span className="inline-flex items-center gap-2 rounded-full bg-red-500/10 px-4 py-1 text-sm font-medium text-red-400 mb-4">
+              <XMarkIcon className="h-4 w-4" />
               The Problem
             </span>
             <h2 className="text-3xl font-bold text-white mb-4">
-              Content marketing is a full-time job
+              Content marketing is eating your calendar
             </h2>
             <ul className="space-y-3 text-slate-400">
               <li className="flex items-start gap-3">
-                <span className="text-red-400">✗</span>
-                Hiring writers is expensive and time-consuming
+                <XMarkIcon className="h-5 w-5 flex-shrink-0 text-red-400 mt-0.5" />
+                Hiring writers takes months and costs a fortune
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-red-400">✗</span>
-                AI tools produce generic, robotic content
+                <XMarkIcon className="h-5 w-5 flex-shrink-0 text-red-400 mt-0.5" />
+                ChatGPT output reads like... ChatGPT output
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-red-400">✗</span>
-                Agencies charge premium prices with slow turnarounds
+                <XMarkIcon className="h-5 w-5 flex-shrink-0 text-red-400 mt-0.5" />
+                Agencies want $500 per article and 2-week lead times
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-red-400">✗</span>
-                Inconsistent quality drains your time reviewing
+                <XMarkIcon className="h-5 w-5 flex-shrink-0 text-red-400 mt-0.5" />
+                You spend more time editing freelancer work than it saves
               </li>
             </ul>
           </div>
           <div>
-            <span className="inline-block rounded-full bg-accent-500/10 px-4 py-1 text-sm font-medium text-accent-400 mb-4">
-              The Solution
+            <span className="inline-flex items-center gap-2 rounded-full bg-accent-500/10 px-4 py-1 text-sm font-medium text-accent-400 mb-4">
+              <CheckIcon className="h-4 w-4" />
+              The Fix
             </span>
             <h2 className="text-3xl font-bold text-white mb-4">
-              DraftCopyAI: The best of both worlds
+              AI does the heavy lifting. Humans do the thinking.
             </h2>
             <ul className="space-y-3 text-slate-400">
               <li className="flex items-start gap-3">
-                <span className="text-accent-400">✓</span>
-                AI speed meets human quality control
+                <CheckIcon className="h-5 w-5 flex-shrink-0 text-accent-400 mt-0.5" />
+                48-hour delivery, not 2-week wait times
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-accent-400">✓</span>
-                Predictable pricing, no surprise invoices
+                <CheckIcon className="h-5 w-5 flex-shrink-0 text-accent-400 mt-0.5" />
+                Content that sounds like a person wrote it (because one did review it)
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-accent-400">✓</span>
-                48-hour delivery as standard
+                <CheckIcon className="h-5 w-5 flex-shrink-0 text-accent-400 mt-0.5" />
+                Flat monthly pricing you can actually budget for
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-accent-400">✓</span>
-                Unlimited revisions until you&apos;re satisfied
+                <CheckIcon className="h-5 w-5 flex-shrink-0 text-accent-400 mt-0.5" />
+                Revisions until it\'s right — we\'re not precious about it
               </li>
             </ul>
           </div>
@@ -278,9 +283,8 @@ export default function Home() {
       {/* How It Works */}
       <Section id="how-it-works">
         <SectionHeader
-          badge="How It Works"
-          title="From brief to published in 3 simple steps"
-          description="Our streamlined process makes content creation effortless. Here's how we turn your ideas into published content."
+          title="Three steps. That\'s it."
+          description="No lengthy onboarding. No complicated workflows. Just tell us what you need and we get to work."
         />
         <div className="grid md:grid-cols-3 gap-8">
           {steps.map((step, index) => (
@@ -311,9 +315,8 @@ export default function Home() {
       {/* Features */}
       <Section dark id="features">
         <SectionHeader
-          badge="Features"
-          title="Everything you need to scale content"
-          description="We've built the features that matter most for busy marketing teams."
+          title="What you actually get"
+          description="No fluff features. Just the stuff that moves the needle on your content."
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
@@ -331,9 +334,8 @@ export default function Home() {
       {/* Pricing */}
       <Section id="pricing">
         <SectionHeader
-          badge="Pricing"
-          title="Simple, transparent pricing"
-          description="No hidden fees, no surprises. Choose the plan that fits your content needs."
+          title="Pricing that makes sense"
+          description="Pick a plan. Know what you\'re paying. No per-word fees, no surprise invoices, no nickel-and-diming."
         />
         <div className="grid md:grid-cols-3 gap-8 lg:gap-6">
           {pricingPlans.map((plan, index) => (
@@ -350,20 +352,8 @@ export default function Home() {
         </div>
         <div className="mt-12 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-accent-500/10 px-6 py-3 text-accent-400">
-            <svg
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-              />
-            </svg>
-            30-day money-back guarantee on all plans
+            <ShieldCheckIcon className="h-5 w-5" />
+            30-day money-back guarantee. Try it risk-free.
           </div>
         </div>
       </Section>
@@ -371,9 +361,8 @@ export default function Home() {
       {/* Testimonials */}
       <Section dark>
         <SectionHeader
-          badge="Testimonials"
-          title="Loved by marketing teams"
-          description="See what our customers have to say about working with DraftCopyAI."
+          title="What our customers say"
+          description="Don\'t take our word for it. Here\'s what people running real marketing teams think."
         />
         <div className="grid md:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
@@ -392,9 +381,8 @@ export default function Home() {
       {/* FAQ */}
       <Section id="faq">
         <SectionHeader
-          badge="FAQ"
-          title="Frequently asked questions"
-          description="Got questions? We've got answers."
+          title="Common questions"
+          description="The stuff people usually ask before signing up."
         />
         <div className="mx-auto max-w-3xl">
           {faqs.map((faq, index) => (
@@ -441,18 +429,18 @@ export default function Home() {
           <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20" />
           <div className="relative px-8 py-16 md:py-24 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Ready to scale your content?
+              Ready to stop stressing about content?
             </h2>
             <p className="mx-auto max-w-xl text-lg text-white/80 mb-8">
-              Join hundreds of marketing teams using DraftCopyAI to produce
-              high-quality content at scale.
+              Your competitors are publishing 4x more content than you.
+              Let\'s fix that.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button href="/contact" variant="primary" size="lg" className="bg-white text-primary-600 hover:bg-slate-100 shadow-none">
                 Start Free Trial
               </Button>
               <Button href="/pricing" variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-                View Pricing
+                Compare Plans
               </Button>
             </div>
           </div>

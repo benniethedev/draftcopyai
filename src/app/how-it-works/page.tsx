@@ -16,66 +16,66 @@ const mainSteps = [
   {
     number: '01',
     icon: <DocumentTextIcon className="h-8 w-8" />,
-    title: 'Submit Your Brief',
+    title: 'Tell Us What You Need',
     description:
-      'Share your content requirements through our simple brief form. Tell us about your topic, target keywords, audience, and any specific requirements or brand guidelines.',
+      'Fill out a quick brief — topic, keywords, target audience, any specific angles you want covered. Takes about 5 minutes. Share your brand guidelines if you have them.',
     details: [
-      'Define your topic and target keywords',
-      'Share your brand voice guidelines',
-      'Specify word count and format',
-      'Include any reference materials',
+      'Pick your topic and target keywords',
+      'Share brand voice guidelines (or we\'ll figure it out)',
+      'Set word count and format preferences',
+      'Drop in any reference material you want us to use',
     ],
   },
   {
     number: '02',
     icon: <SparklesIcon className="h-8 w-8" />,
-    title: 'AI Creates Draft',
+    title: 'AI Creates the First Draft',
     description:
-      'Our advanced AI analyzes your brief and creates a comprehensive first draft. It researches the topic, structures the content, and writes engaging copy optimized for your goals.',
+      'Our AI does the heavy lifting — researching the topic, building the structure, writing the first pass. It handles the grunt work so humans can focus on making it good.',
     details: [
-      'Deep topic research and analysis',
-      'SEO-optimized structure',
-      'Engaging, readable content',
-      'Proper formatting and headers',
+      'Deep research on your topic',
+      'SEO-friendly structure built in from the start',
+      'Full draft written to your specifications',
+      'Proper formatting, headers, the works',
     ],
   },
   {
     number: '03',
     icon: <PencilSquareIcon className="h-8 w-8" />,
-    title: 'Human Editor Review',
+    title: 'Human Editors Polish It',
     description:
-      'Every piece is reviewed and refined by our experienced human editors. They ensure factual accuracy, brand voice consistency, and overall quality that meets our high standards.',
+      'Every piece gets reviewed by a real person. They fact-check, fix weird phrasing, match your brand voice, and make sure it reads like something a human wrote.',
     details: [
-      'Fact-checking and verification',
-      'Brand voice alignment',
-      'Grammar and style polish',
-      'Quality assurance',
+      'Facts and claims verified',
+      'Brand voice dialed in',
+      'Grammar, style, and flow polished',
+      'Quality check before it hits your inbox',
     ],
   },
   {
     number: '04',
     icon: <ChatBubbleLeftRightIcon className="h-8 w-8" />,
-    title: 'Review & Revise',
+    title: 'You Review (and Revise if Needed)',
     description:
-      'Receive your content and request any revisions you need. We offer unlimited revisions until you\'re completely satisfied with the final result.',
+      'We send you the finished piece. Read it over. If something\'s off, tell us — we\'ll fix it. Revisions are unlimited because we\'d rather get it right than argue about scope.',
     details: [
-      'Review content in your dashboard',
-      'Leave inline comments',
-      'Request unlimited revisions',
-      'Approve when satisfied',
+      'Review in your dashboard',
+      'Leave comments right on the doc',
+      'Request as many revisions as you need',
+      'Approve when you\'re happy',
     ],
   },
   {
     number: '05',
     icon: <RocketLaunchIcon className="h-8 w-8" />,
-    title: 'Publish & Track',
+    title: 'Publish and Watch It Work',
     description:
-      'Export your approved content and publish it. Track performance over time and use insights to inform your future content strategy.',
+      'Export your content, publish it, and get on with your day. Track how it performs over time and use what you learn to make future content even better.',
     details: [
-      'Download in multiple formats',
-      'Direct CMS integration available',
-      'Track content performance',
-      'Refine strategy with data',
+      'Download in whatever format you need',
+      'CMS integrations available for Scale plans',
+      'See how your content performs',
+      'Use the data to plan your next batch',
     ],
   },
 ];
@@ -83,23 +83,23 @@ const mainSteps = [
 const contentTypes = [
   {
     title: 'Blog Posts',
-    description: 'Long-form articles optimized for SEO and reader engagement.',
+    description: 'Long-form articles that rank and actually get read.',
     wordCount: '1,500-2,500 words',
   },
   {
-    title: 'Social Media',
-    description: 'Engaging posts for LinkedIn, Twitter, and other platforms.',
-    wordCount: 'Platform-optimized',
+    title: 'Social Posts',
+    description: 'LinkedIn, Twitter, whatever — written for the platform.',
+    wordCount: 'Platform-appropriate',
   },
   {
     title: 'Email Sequences',
-    description: 'Conversion-focused email campaigns and newsletters.',
+    description: 'Nurture campaigns and newsletters that don\'t feel spammy.',
     wordCount: '300-500 words each',
   },
   {
     title: 'Landing Pages',
-    description: 'Persuasive copy that converts visitors into customers.',
-    wordCount: 'Custom length',
+    description: 'Copy that turns visitors into leads.',
+    wordCount: 'Whatever it takes',
   },
 ];
 
@@ -116,13 +116,12 @@ export default function HowItWorksPage() {
             className="text-center"
           >
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white">
-              How{' '}
-              <span className="gradient-text">DraftCopyAI</span>{' '}
-              Works
+              How It{' '}
+              <span className="gradient-text">Actually Works</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-              From brief to published content in just a few steps. Our hybrid AI +
-              human approach delivers quality content fast.
+              No black box. No magic. Just a straightforward process that 
+              gets you quality content without the usual headaches.
             </p>
           </motion.div>
         </div>
@@ -145,7 +144,7 @@ export default function HowItWorksPage() {
                 className="relative grid lg:grid-cols-2 gap-8 lg:gap-16 items-center"
               >
                 {/* Step indicator */}
-                <div className="hidden lg:block absolute left-0 w-16 h-16 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center text-white font-bold text-xl">
+                <div className="hidden lg:flex absolute left-0 w-16 h-16 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 items-center justify-center text-white font-bold text-xl">
                   {step.number}
                 </div>
 
@@ -169,7 +168,7 @@ export default function HowItWorksPage() {
                 <div className="lg:pl-0">
                   <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
                     <h4 className="text-sm font-medium text-primary-400 mb-4 uppercase tracking-wider">
-                      What happens
+                      What happens here
                     </h4>
                     <ul className="space-y-3">
                       {step.details.map((detail, i) => (
@@ -190,9 +189,8 @@ export default function HowItWorksPage() {
       {/* Content Types */}
       <Section dark>
         <SectionHeader
-          badge="Content Types"
-          title="What we create"
-          description="From blog posts to email sequences, we handle all your content needs."
+          title="What we write"
+          description="The content types that move the needle for B2B marketing."
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {contentTypes.map((type, index) => (
@@ -219,9 +217,8 @@ export default function HowItWorksPage() {
       {/* Sample Content Showcase */}
       <Section>
         <SectionHeader
-          badge="Sample Content"
-          title="See the quality for yourself"
-          description="Here's an example of the content we produce."
+          title="See what the output looks like"
+          description="Here's an actual sample of the kind of content we produce."
         />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -234,24 +231,27 @@ export default function HowItWorksPage() {
               <div className="w-3 h-3 rounded-full bg-red-500" />
               <div className="w-3 h-3 rounded-full bg-yellow-500" />
               <div className="w-3 h-3 rounded-full bg-green-500" />
-              <span className="ml-4 text-sm text-slate-400">blog-post.md</span>
+              <span className="ml-4 text-sm text-slate-400">blog-post-sample.md</span>
             </div>
             <div className="p-6 font-mono text-sm">
-              <p className="text-primary-400 mb-4"># 10 Ways AI is Transforming Content Marketing in 2024</p>
+              <p className="text-primary-400 mb-4"># Why Your Content Strategy Isn't Working (And What to Do Instead)</p>
               <p className="text-slate-400 mb-4">
-                <span className="text-slate-500">*Posted on January 15, 2024 | 8 min read*</span>
+                <span className="text-slate-500">January 2024 • 7 min read</span>
               </p>
               <p className="text-slate-300 mb-4">
-                Content marketing has evolved dramatically over the past decade, but nothing compares to the seismic shift we&apos;re witnessing with AI integration. From automated research to personalized content at scale, artificial intelligence is reshaping how brands connect with their audiences.
+                You're publishing twice a week. You've got a keyword list. You're doing all the things the marketing blogs tell you to do. But six months in, your traffic graph looks like a flatline EKG.
               </p>
               <p className="text-slate-300 mb-4">
-                In this comprehensive guide, we&apos;ll explore the top 10 ways AI is revolutionizing content marketing—and how you can leverage these technologies to stay ahead of the curve.
+                Here's the uncomfortable truth: most B2B content fails because it's written for search engines, not humans. And Google has gotten scary good at telling the difference.
               </p>
-              <p className="text-primary-400 mb-2">## 1. Automated Content Research</p>
+              <p className="text-primary-400 mb-2">## The Real Problem: Content That Sounds Like Content</p>
               <p className="text-slate-300">
-                Gone are the days of spending hours scouring the internet for statistics and sources. AI-powered research tools can now analyze thousands of articles in seconds, identifying key trends, data points, and expert opinions relevant to your topic...
+                Read your last five blog posts out loud. Do they sound like something a real person would say to a colleague? Or do they sound like... marketing content?
               </p>
-              <p className="text-slate-500 mt-4">[Content continues for 1,500+ words...]</p>
+              <p className="text-slate-300 mt-4">
+                The difference matters. Readers can feel when they're being "marketed to" versus when someone's actually trying to help them solve a problem...
+              </p>
+              <p className="text-slate-500 mt-4">[Continues for 1,800 words...]</p>
             </div>
           </div>
         </motion.div>
@@ -261,18 +261,18 @@ export default function HowItWorksPage() {
       <Section dark>
         <div className="text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Ready to see it in action?
+            Want to see it in action?
           </h2>
           <p className="text-slate-400 mb-8 max-w-lg mx-auto">
-            Start your free trial and experience our streamlined content workflow
-            for yourself.
+            Start a free trial. Submit a brief for something you actually need.
+            See what we deliver. Then decide.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button href="/contact" variant="primary" size="lg">
               Start Free Trial
             </Button>
             <Button href="/pricing" variant="outline" size="lg">
-              View Pricing
+              See Pricing
             </Button>
           </div>
         </div>

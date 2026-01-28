@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CheckIcon, XMarkIcon } from '@heroicons/react/24/solid';
+import { CheckIcon, XMarkIcon, ShieldCheckIcon } from '@heroicons/react/24/solid';
 import Section, { SectionHeader } from '@/components/Section';
 import PricingCard from '@/components/PricingCard';
 import Button from '@/components/Button';
@@ -10,28 +10,28 @@ const pricingPlans = [
   {
     name: 'Starter',
     price: '$499',
-    description: 'Perfect for small businesses just getting started with content.',
+    description: 'Getting serious about content but not ready to go all-in.',
     features: [
       '8 blog posts per month',
-      '1,500+ words per post',
-      'SEO optimization included',
+      '1,500+ words each',
+      'SEO baked in',
       'Unlimited revisions',
-      '48-hour delivery',
+      '48-hour turnaround',
       'Email support',
     ],
   },
   {
     name: 'Growth',
     price: '$999',
-    description: 'For growing teams that need consistent, quality content.',
+    description: 'For teams that need consistent output without the hiring headache.',
     features: [
       '20 blog posts per month',
-      '1,500+ words per post',
-      'Social media content (40 posts)',
-      'SEO optimization included',
+      '1,500+ words each',
+      '40 social posts included',
+      'SEO baked in',
       'Unlimited revisions',
-      '24-hour delivery',
-      'Dedicated account manager',
+      '24-hour turnaround',
+      'Your own account manager',
       'Priority support',
     ],
     popular: true,
@@ -39,18 +39,18 @@ const pricingPlans = [
   {
     name: 'Scale',
     price: '$1,999',
-    description: 'Enterprise-level content production for serious growth.',
+    description: 'Full content operation without building a full content team.',
     features: [
       '40 blog posts per month',
-      '2,000+ words per post',
-      'Social media content (100 posts)',
-      'Email sequences (4 per month)',
-      'SEO optimization included',
+      '2,000+ words each',
+      '100 social posts included',
+      '4 email sequences monthly',
+      'SEO baked in',
       'Unlimited revisions',
-      'Same-day delivery available',
-      'Dedicated content strategist',
-      'Slack integration',
-      'Custom reporting',
+      'Same-day delivery option',
+      'Dedicated strategist',
+      'Slack channel access',
+      'Monthly performance reports',
     ],
   },
 ];
@@ -143,12 +143,12 @@ export default function PricingPage() {
             className="text-center"
           >
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white">
-              Simple, transparent{' '}
-              <span className="gradient-text">pricing</span>
+              Pick a plan.{' '}
+              <span className="gradient-text">Know the cost.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-              No hidden fees, no per-word charges. Choose the plan that matches
-              your content needs and scale as you grow.
+              No per-word fees. No hidden charges. No awkward invoice surprises.
+              Just flat monthly pricing for as much content as you need.
             </p>
           </motion.div>
         </div>
@@ -181,26 +181,14 @@ export default function PricingPage() {
             className="inline-flex flex-col items-center"
           >
             <div className="h-20 w-20 rounded-full bg-gradient-to-r from-accent-500 to-accent-600 flex items-center justify-center mb-6">
-              <svg
-                className="h-10 w-10 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                />
-              </svg>
+              <ShieldCheckIcon className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-2xl font-bold text-white mb-2">
               30-Day Money-Back Guarantee
             </h2>
             <p className="text-slate-400 max-w-lg">
-              Not satisfied with our service? Get a full refund within the first
-              30 days, no questions asked. We&apos;re confident you&apos;ll love our content.
+              Not happy after 30 days? Full refund, no awkward conversations.
+              We think you'll stick around, but if not — no hard feelings.
             </p>
           </motion.div>
         </div>
@@ -209,9 +197,8 @@ export default function PricingPage() {
       {/* Feature Comparison Table */}
       <Section>
         <SectionHeader
-          badge="Compare Plans"
-          title="Feature comparison"
-          description="See exactly what you get with each plan."
+          title="Side-by-side comparison"
+          description="Here's exactly what you get at each tier. No asterisks."
         />
         <div className="overflow-x-auto">
           <table className="w-full">
@@ -273,17 +260,18 @@ export default function PricingPage() {
       <Section dark>
         <div className="text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Ready to get started?
+            Still have questions?
           </h2>
           <p className="text-slate-400 mb-8 max-w-lg mx-auto">
-            Start your free trial today. No credit card required.
+            Let's talk. No sales pitch — just an honest conversation about
+            whether we're a good fit for what you need.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button href="/contact" variant="primary" size="lg">
               Start Free Trial
             </Button>
             <Button href="/contact" variant="outline" size="lg">
-              Talk to Sales
+              Book a Call
             </Button>
           </div>
         </div>

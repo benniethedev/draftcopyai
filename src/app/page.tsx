@@ -22,7 +22,10 @@ import Button from '@/components/Button';
 import Section, { SectionHeader } from '@/components/Section';
 import FeatureCard from '@/components/FeatureCard';
 import PricingCard from '@/components/PricingCard';
-import TestimonialCard from '@/components/TestimonialCard';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import CaseStudyCard from '@/components/CaseStudyCard';
+import { getFeaturedTestimonials } from '@/data/testimonials';
+import { getFeaturedCaseStudies } from '@/data/caseStudies';
 import { useState } from 'react';
 
 const features = [
@@ -122,29 +125,7 @@ const pricingPlans = [
   },
 ];
 
-const testimonials = [
-  {
-    quote:
-      'We were doing maybe 2 posts a month before. Now we do 20. Organic traffic tripled in 6 months and I actually have time for other things.',
-    author: 'Sarah Chen',
-    role: 'Marketing Director',
-    company: 'TechFlow',
-  },
-  {
-    quote:
-      "I was skeptical about AI content. But honestly? I can't tell the difference between this and what our senior writer produces. And it costs a third as much.",
-    author: 'Marcus Johnson',
-    role: 'Founder',
-    company: 'GrowthLab',
-  },
-  {
-    quote:
-      "Most content services don't get B2B. These folks do. We hit page 1 for three target keywords within six weeks.",
-    author: 'Emily Rodriguez',
-    role: 'Head of Content',
-    company: 'ScaleUp',
-  },
-];
+// Testimonials and case studies are now loaded from data files
 
 const faqs = [
   {
@@ -427,17 +408,39 @@ export default function Home() {
           title="What our customers say"
           description="Don't take our word for it. Here's what people running real marketing teams think."
         />
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard
-              key={testimonial.author}
-              quote={testimonial.quote}
-              author={testimonial.author}
-              role={testimonial.role}
-              company={testimonial.company}
+        <TestimonialsSection
+          testimonials={getFeaturedTestimonials()}
+          layout="grid"
+          showRating
+        />
+        <div className="mt-10 text-center">
+          <Button href="/case-studies" variant="outline">
+            Read Customer Stories
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+      </Section>
+
+      {/* Case Studies Preview */}
+      <Section>
+        <SectionHeader
+          title="Success Stories"
+          description="See how teams are scaling content production and driving real results."
+        />
+        <div className="grid md:grid-cols-2 gap-8">
+          {getFeaturedCaseStudies().map((caseStudy, index) => (
+            <CaseStudyCard
+              key={caseStudy.id}
+              caseStudy={caseStudy}
               delay={index * 0.1}
             />
           ))}
+        </div>
+        <div className="mt-10 text-center">
+          <Button href="/case-studies" variant="outline">
+            View All Case Studies
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
         </div>
       </Section>
 

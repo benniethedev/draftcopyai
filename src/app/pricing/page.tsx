@@ -1,15 +1,18 @@
 'use client';
 
+import { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Check, X, Shield, ArrowRight, HelpCircle } from 'lucide-react';
 import Section, { SectionHeader } from '@/components/Section';
 import PricingCard from '@/components/PricingCard';
 import Button from '@/components/Button';
+import CheckoutStatus from '@/components/CheckoutStatus';
 
 const pricingPlans = [
   {
     name: 'Starter',
     price: '$499',
+    planId: 'starter' as const,
     description: 'Getting serious about content but not ready to go all-in.',
     features: [
       '8 blog posts per month',
@@ -23,6 +26,7 @@ const pricingPlans = [
   {
     name: 'Growth',
     price: '$999',
+    planId: 'growth' as const,
     description: 'For teams that need consistent output without the hiring headache.',
     features: [
       '20 blog posts per month',
@@ -39,6 +43,7 @@ const pricingPlans = [
   {
     name: 'Scale',
     price: '$1,999',
+    planId: 'scale' as const,
     description: 'Full content operation without building a full content team.',
     features: [
       '40 blog posts per month',
@@ -133,6 +138,11 @@ const comparisonFeatures = [
 export default function PricingPage() {
   return (
     <>
+      {/* Checkout Status Toast */}
+      <Suspense fallback={null}>
+        <CheckoutStatus />
+      </Suspense>
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-slate-50 grain pt-16 pb-8">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-100/30 via-transparent to-accent-100/20" />
@@ -163,6 +173,7 @@ export default function PricingPage() {
               key={plan.name}
               name={plan.name}
               price={plan.price}
+              planId={plan.planId}
               description={plan.description}
               features={plan.features}
               popular={plan.popular}

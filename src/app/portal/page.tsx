@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import {
@@ -12,6 +13,7 @@ import {
 } from 'lucide-react';
 import { ProjectCard, StatsCard } from '@/components/portal';
 import { mockClient, mockProjects, mockStats } from '@/lib/mock-data';
+import CheckoutStatus from '@/components/CheckoutStatus';
 
 export default function PortalDashboard() {
   // Get recent projects (last 5)
@@ -33,6 +35,11 @@ export default function PortalDashboard() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+      {/* Checkout Status Toast */}
+      <Suspense fallback={null}>
+        <CheckoutStatus />
+      </Suspense>
+
       {/* Welcome Section */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}

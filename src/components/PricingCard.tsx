@@ -1,7 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { Check, Loader2 } from 'lucide-react';
 import Button from './Button';
 
 interface PricingCardProps {
@@ -11,6 +12,7 @@ interface PricingCardProps {
   features: string[];
   popular?: boolean;
   delay?: number;
+  planId?: 'starter' | 'growth' | 'scale';
 }
 
 export default function PricingCard({
@@ -20,7 +22,40 @@ export default function PricingCard({
   features,
   popular = false,
   delay = 0,
+  planId,
 }: PricingCardProps) {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubscribe = async () => {
+    if (!planId) {
+      // Fall back to contact page if no planId
+      window.location.href = '/contact';
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await fetch('/api/stripe/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan: planId }),
+      });
+
+      const data = await response.json();
+
+      if (data.url) {
+        // Redirect to Stripe Checkout
+        window.location.href = data.url;
+      } else {
+        console.error('No checkout URL returned');
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error('Checkout error:', error);
+      setLoading(false);
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -56,13 +91,34 @@ export default function PricingCard({
           </li>
         ))}
       </ul>
-      <Button
-        href="/contact"
-        variant={popular ? 'primary' : 'outline'}
-        className="w-full"
-      >
-        Get Started
-      </Button>
+      {planId ? (
+        <button
+          onClick={handleSubscribe}
+          disabled={loading}
+          className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+            popular
+              ? 'bg-accent-500 text-white hover:bg-accent-600 disabled:bg-accent-300'
+              : 'border-2 border-primary-900 text-primary-900 hover:bg-primary-900 hover:text-white disabled:opacity-50'
+          }`}
+        >
+          {loading ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" />
+              Redirecting...
+            </>
+          ) : (
+            'Get Started'
+          )}
+        </button>
+      ) : (
+        <Button
+          href="/contact"
+          variant={popular ? 'primary' : 'outline'}
+          className="w-full"
+        >
+          Get Started
+        </Button>
+      )}
     </motion.div>
   );
 }
